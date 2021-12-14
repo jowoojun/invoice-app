@@ -22,6 +22,7 @@ const HeaderLayoutContainer = styled.div<{darkMode: boolean}>`
   @media screen and (min-width: 1023px) {
     flex-direction: column;
     height: 100vh;
+    z-index: 9999;
   }
 `
 

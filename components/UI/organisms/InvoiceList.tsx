@@ -11,6 +11,12 @@ const InvoiceListContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 16px;
+  @media screen and (min-width: 767px) {
+    margin-top: 40px;
+  }
+  @media screen and (min-width: 1023px){
+    margin-top: 49px;
+  }
 `
 
 interface InvoiceListProps {

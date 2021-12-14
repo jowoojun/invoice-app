@@ -19,7 +19,22 @@ const HomeTemplateContainer = styled.div<{ darkMode: boolean }>`
 `
 
 const InvoiceListContainer = styled.div`
+  @media screen and (min-width: 1023px) {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    width: 100vw;
+  }
+`
+
+const InvoiceListLayout = styled.div`
   padding: 32px 24px;
+  @media screen and (min-width: 767px) {
+    padding: 56px 48px;
+  }
+  @media screen and (min-width: 1023px) {
+    padding: 72px 0;
+  }
 `
 
 interface HomeTemplateProps {
@@ -32,8 +47,10 @@ const HomeTemplate = ({darkMode, mainInvoices}: HomeTemplateProps) => {
     <HomeTemplateContainer darkMode={darkMode}>
       <Header />
       <InvoiceListContainer>
-        <InvoiceListHeader darkMode={darkMode} nInvoices={mainInvoices.length} />
-        <InvoiceList darkMode={darkMode} mainInvoices={mainInvoices} />
+        <InvoiceListLayout>
+          <InvoiceListHeader darkMode={darkMode} nInvoices={mainInvoices.length} />
+          <InvoiceList darkMode={darkMode} mainInvoices={mainInvoices} />
+        </InvoiceListLayout>
       </InvoiceListContainer>
     </HomeTemplateContainer>
   )
