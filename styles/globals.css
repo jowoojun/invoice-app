@@ -5,7 +5,7 @@ html {
   word-wrap: break-word;
 }
 body {
-  background: #0e1323;
+  background: transparent;
   -webkit-font-smoothing: antialiased;
 }
 html,

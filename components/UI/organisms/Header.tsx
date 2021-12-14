@@ -13,9 +13,12 @@ const HeaderLayoutContainer = styled.div<{darkMode: boolean}>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+  height: 72px;
   background-color: ${props => HeaderBackgroundColor(props.darkMode)};
   
+  @media screen and (min-width: 767px) {
+    height: 80px;
+  }
   @media screen and (min-width: 1023px) {
     flex-direction: column;
     height: 100vh;

@@ -2,18 +2,38 @@
 import styled from 'styled-components';
 import Header from '../UI/organisms/Header'
 
-const HomeTemplateContainer = styled.div`
+import InvoiceListHeader from '../UI/organisms/InvoiceListHeader'
+import InvoiceList from '../UI/organisms/InvoiceList'
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/reducer';
 
+import {
+  MainBackgroundColor
+} from '../UI/atoms/Colors';
+
+const HomeTemplateContainer = styled.div<{ darkMode: boolean }>`
+  height: 100vh;
+  background-color: ${props => MainBackgroundColor(props.darkMode)};
   @media screen and (min-width: 1023px) {
     display: flex;
-    height: 100vh;
   }
 `
 
+const InvoiceListContainer = styled.div`
+
+`
+
+
 const HomeTemplate = () => {
+  const { darkMode } = useSelector((state: RootState) => state.setting);
+
   return (
-    <HomeTemplateContainer>
+    <HomeTemplateContainer darkMode={darkMode}>
       <Header />
+      <InvoiceListContainer>
+        <InvoiceListHeader darkMode={darkMode}/>
+        {/* <InvoiceList darkMode={darkMode} /> */}
+      </InvoiceListContainer>
     </HomeTemplateContainer>
   )
 }
