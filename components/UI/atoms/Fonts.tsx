@@ -28,6 +28,7 @@ export const Heading_1 = styled(DefaultFont)`
 `
 
 export const Heading_2 = styled(DefaultFont)`
+  font-size: 20px;
   font-weight: bold;
   line-height: 22px;
   letter-spacing: -0.625px;

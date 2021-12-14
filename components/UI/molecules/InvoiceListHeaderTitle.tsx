@@ -4,13 +4,13 @@ import {
   Heading_1, BodyFont1
 } from '../atoms/Fonts';
 import {
-  InvoiceListHeader_Subheader_FontColor,
+  FontBodyFontColor1,
 } from '../atoms/Colors';
 
 
 const SubheaderFont = styled(BodyFont1)<{ darkMode: boolean }>`
   margin-top: 4px;
-  color: ${props => InvoiceListHeader_Subheader_FontColor(props.darkMode)};
+  color: ${props => FontBodyFontColor1(props.darkMode)};
 `
 
 interface InvoiceListHeaderTitleProps {

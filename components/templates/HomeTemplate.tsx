@@ -20,7 +20,7 @@ const HomeTemplateContainer = styled.div<{ darkMode: boolean }>`
 `
 
 const InvoiceListContainer = styled.div`
-
+  padding: 32px 24px;
 `
 
 
@@ -32,7 +32,7 @@ const HomeTemplate = () => {
       <Header />
       <InvoiceListContainer>
         <InvoiceListHeader darkMode={darkMode}/>
-        {/* <InvoiceList darkMode={darkMode} /> */}
+        <InvoiceList darkMode={darkMode} />
       </InvoiceListContainer>
     </HomeTemplateContainer>
   )
