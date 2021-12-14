@@ -10,14 +10,14 @@ const useTimeFormat = (data: string) => {
       "Sep", "Oct","Nov","Dec"
     ];
     let time = new Date(data);
-    let day = time.getDate();
+    let day = time.getDate().toString().padStart(2, '0');
     
     let monthIndex = time.getMonth();
     let monthName = monthNames[monthIndex];
     
     let year = time.getFullYear();
     
-    setNewFormatTime(`${day}-${monthName}-${year}`);
+    setNewFormatTime(`${day} ${monthName} ${year}`);
   }, []);
 
   return newFormatTime;

@@ -6,6 +6,7 @@ import {
   InvoiceListHeader_NewButton_FontColor
 } from './Colors'
 import Image from 'next/image'
+import useWindowSize from '../../../hooks/useWindowSize'
 
 const NewButtonContainer = styled.div`
   display: flex;
@@ -52,6 +53,7 @@ const NewButtonFont = styled(Heading_4)`
 `
 
 const NewButton = () => {
+  const width = useWindowSize();
   return (
     <NewButtonContainer>
       <PlueIconContainer>
@@ -59,7 +61,9 @@ const NewButton = () => {
           <Image alt={'new invoice'} src={'/images/icon-plus.svg'} layout={'fill'} objectFit={'contain'} />
         </PlueIcon>
       </PlueIconContainer>
-      <NewButtonFont>New</NewButtonFont>
+      <NewButtonFont>
+        {width < 767 ? "New" : "New Invoice"}
+      </NewButtonFont>
     </NewButtonContainer>
   )
 }
