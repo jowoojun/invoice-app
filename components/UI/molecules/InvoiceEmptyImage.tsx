@@ -8,9 +8,9 @@ const InvoiceEmptyImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
   width: 217px;
   height: 277px;
+  margin-top: 70px;
 `
 
 const EmptyText = styled.div`
@@ -29,7 +29,6 @@ const EmptyImage = styled.div`
 
 const EmptySubText = styled(BodyFont1)<{darkMode: boolean}>`
   text-align: center;
-  color: ${props => FontBodyFontColor1(props.darkMode)}
 `
 
 interface InvoiceEmptyImageProps {

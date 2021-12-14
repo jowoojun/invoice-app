@@ -11,12 +11,13 @@ const InvoiceListHeaderBContainer = styled.div`
 
 interface InvoiceListHeaderProps {
   darkMode: boolean;
+  nInvoices: number;
 } 
 
-const InvoiceListHeader = ({darkMode}: InvoiceListHeaderProps) => {
+const InvoiceListHeader = ({darkMode, nInvoices}: InvoiceListHeaderProps) => {
   return (
     <InvoiceListHeaderBContainer>
-      <InvoiceListHeaderTitle darkMode={darkMode}/>
+      <InvoiceListHeaderTitle darkMode={darkMode} nInvoices={nInvoices} />
       <InvoiceListHeaderButton darkMode={darkMode}/>
     </InvoiceListHeaderBContainer>
   )

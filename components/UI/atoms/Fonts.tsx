@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { 
-  FontDefaultColor
+  FontDefaultColor, FontBodyFontColor1
 } from './Colors'
 
 const DefaultFont = styled.p<{ darkMode?: boolean }>`
@@ -67,12 +67,13 @@ export const Heading_4 = styled(DefaultFont)`
   }
 `
 
-export const BodyFont1 = styled(DefaultFont)`
+export const BodyFont1 = styled(DefaultFont)<{ darkMode: boolean }>`
   font-weight: 500;
   line-height: 15px;
   letter-spacing: -0.25px;
   font-size: 12px;
   
+  color: ${props => FontBodyFontColor1(props.darkMode)};
 `
 
 export const BodyFont2 = styled(DefaultFont)`
