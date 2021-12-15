@@ -1,12 +1,14 @@
 import produce from "../../utils/produce";
 import {
   LOAD_INVOICES_REQUEST, LOAD_INVOICES_SUCCESS, LOAD_INVOICES_FAILURE,
+  LOAD_INVOICE_BY_ID_REQUEST, LOAD_INVOICE_BY_ID_SUCCESS, LOAD_INVOICE_BY_ID_FAILURE,
   FILTER_INVOICES_LIST, invoicesProps
 } from './types'
 import { ActionRequest } from "./actions";
 
 export const initalState: invoicesProps = {
   mainInvoices: [],
+  invoice: null,
   filteredInvoices: [],
   loadInvoicesLoading: false,
   loadInvoicesDone: false,
@@ -28,13 +30,27 @@ const ReducerInvoice = (
   case LOAD_INVOICES_SUCCESS: {
     draft.loadInvoicesLoading = false;
     draft.loadInvoicesDone = true;
-    draft.mainInvoices = draft.mainInvoices.concat(action.payload);
+    draft.mainInvoices = draft.mainInvoices.concat(action.payload.data);
     draft.filteredInvoices = draft.mainInvoices;
     break;
   }
-  case LOAD_INVOICES_FAILURE: {
+  case LOAD_INVOICES_FAILURE: 
+  case LOAD_INVOICE_BY_ID_FAILURE: {
     draft.loadInvoicesLoading = false;
-    draft.loadInvoicesError = action.payload;
+    draft.loadInvoicesError = action.payload.error;
+    break;
+  }
+  case LOAD_INVOICE_BY_ID_REQUEST: {
+    draft.invoice = null;
+    draft.loadInvoicesLoading = true;
+    draft.loadInvoicesDone = false;
+    draft.loadInvoicesError = null;
+    break;
+  }
+  case LOAD_INVOICE_BY_ID_SUCCESS: {
+    draft.loadInvoicesLoading = false;
+    draft.loadInvoicesDone = true;
+    draft.invoice = action.payload.data;
     break;
   }
   case FILTER_INVOICES_LIST: {
