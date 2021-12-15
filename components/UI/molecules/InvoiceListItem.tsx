@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { invoiceProps } from "../../../store/invoice/types";
 import { 
   CardBackgroundColor, FontShopTagColor1, 
   InvoiceStatusButtonColor, InvoiceStatusTextColor,
-  FontBodyFontColor1
 } from "../atoms/Colors";
 import { BodyFont1, Heading_3, Heading_4 } from "../atoms/Fonts";
 
@@ -98,6 +98,57 @@ const ArrowIcon = styled.div`
   height: 10px;
 `
 
+interface InvoiceListItemDesignProps {
+  newFormatTime: string
+  invoice: invoiceProps
+  darkMode: boolean
+}
+
+const InvoiceListItemMobile = ({newFormatTime, invoice, darkMode}: InvoiceListItemDesignProps) => {
+  return (
+    <>
+      <InvoiceCardTypeLayout>
+        <Heading_4 darkMode={darkMode}>
+          <ShopTagFont darkMode={darkMode}>#</ShopTagFont>{invoice.id}
+        </Heading_4>
+        <BodyFont1 darkMode={darkMode}>{invoice.clientName}</BodyFont1>
+      </InvoiceCardTypeLayout>
+      <InvoiceCardTypeLayout>
+        <div>
+          <InvoiceDueText darkMode={darkMode}>Due {newFormatTime}</InvoiceDueText>
+          <Heading_3 darkMode={darkMode}>£ {invoice.total.toFixed(2)}</Heading_3>
+        </div>
+        <StatusButton darkMode={darkMode} status={invoice.status}>
+          <StatusCircle darkMode={darkMode} status={invoice.status} />
+          <StatusButtonText darkMode={darkMode} status={invoice.status}>{invoice.status}</StatusButtonText>
+        </StatusButton>
+      </InvoiceCardTypeLayout>
+    </>
+  )
+}
+
+const InvoiceListItemTablet = ({newFormatTime, invoice, darkMode}: InvoiceListItemDesignProps) => {
+  return (
+    <>
+      <Heading_4 darkMode={darkMode}>
+        <ShopTagFont darkMode={darkMode}>#</ShopTagFont>{invoice.id}
+      </Heading_4>
+      <InvoiceDueText darkMode={darkMode}>Due {newFormatTime}</InvoiceDueText>
+      <BodyFont1 darkMode={darkMode}>{invoice.clientName}</BodyFont1>
+      <InvoiceTotalFont darkMode={darkMode}>£ {invoice.total.toFixed(2)}</InvoiceTotalFont>
+      <StatusButton darkMode={darkMode} status={invoice.status}>
+        <StatusCircle darkMode={darkMode} status={invoice.status} />
+        <StatusButtonText darkMode={darkMode} status={invoice.status}>{invoice.status}</StatusButtonText>
+      </StatusButton>
+      <ArrowIconContainer>
+        <ArrowIcon>
+          <Image alt={'arrow-right'} src={'/images/icon-arrow-right.svg'} layout={'fill'} objectFit={'contain'} />
+        </ArrowIcon>
+      </ArrowIconContainer>
+    </>
+  )
+}
+
 interface InvoiceListItemProps {
   invoice: invoiceProps
   darkMode: boolean
@@ -107,48 +158,17 @@ const InvoiceListItem = ({invoice, darkMode}: InvoiceListItemProps) => {
   const width = useWindowSize();
   const newFormatTime = useTimeFormat(invoice.paymentDue.toString());
   
-  if(width < 767) { // mobile design
-    return (
+  return (
+    <Link href={'/invoice/' + invoice.id} passHref>
       <InvoiceListItemContainer darkMode={darkMode}>
-        <InvoiceCardTypeLayout>
-          <Heading_4 darkMode={darkMode}>
-            <ShopTagFont darkMode={darkMode}>#</ShopTagFont>{invoice.id}
-          </Heading_4>
-          <BodyFont1 darkMode={darkMode}>{invoice.clientName}</BodyFont1>
-        </InvoiceCardTypeLayout>
-        <InvoiceCardTypeLayout>
-          <div>
-            <InvoiceDueText darkMode={darkMode}>Due {newFormatTime}</InvoiceDueText>
-            <Heading_3 darkMode={darkMode}>£ {invoice.total.toFixed(2)}</Heading_3>
-          </div>
-          <StatusButton darkMode={darkMode} status={invoice.status}>
-            <StatusCircle darkMode={darkMode} status={invoice.status} />
-            <StatusButtonText darkMode={darkMode} status={invoice.status}>{invoice.status}</StatusButtonText>
-          </StatusButton>
-        </InvoiceCardTypeLayout>
+        {width < 767 ?
+          <InvoiceListItemMobile newFormatTime={newFormatTime} invoice={invoice} darkMode={darkMode} />
+        :
+          <InvoiceListItemTablet newFormatTime={newFormatTime} invoice={invoice} darkMode={darkMode} />
+        }
       </InvoiceListItemContainer>
-    )
-  } else { // tablet & desktop design
-    return (
-      <InvoiceListItemContainer darkMode={darkMode}>
-        <Heading_4 darkMode={darkMode}>
-          <ShopTagFont darkMode={darkMode}>#</ShopTagFont>{invoice.id}
-        </Heading_4>
-        <InvoiceDueText darkMode={darkMode}>Due {newFormatTime}</InvoiceDueText>
-        <BodyFont1 darkMode={darkMode}>{invoice.clientName}</BodyFont1>
-        <InvoiceTotalFont darkMode={darkMode}>£ {invoice.total.toFixed(2)}</InvoiceTotalFont>
-        <StatusButton darkMode={darkMode} status={invoice.status}>
-          <StatusCircle darkMode={darkMode} status={invoice.status} />
-          <StatusButtonText darkMode={darkMode} status={invoice.status}>{invoice.status}</StatusButtonText>
-        </StatusButton>
-        <ArrowIconContainer>
-          <ArrowIcon>
-            <Image alt={'arrow-right'} src={'/images/icon-arrow-right.svg'} layout={'fill'} objectFit={'contain'} />
-          </ArrowIcon>
-        </ArrowIconContainer>
-      </InvoiceListItemContainer>
-    )
-  }
+    </Link>
+  )
 }
 
 export default InvoiceListItem;
