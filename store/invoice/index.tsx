@@ -13,7 +13,7 @@ export const initalState: invoicesProps = {
   loadInvoicesError: null,
 };
 
-const ReducerSetting = (
+const ReducerInvoice = (
   state:invoicesProps = initalState,
   action: ActionRequest
 ) => produce(state, (draft: invoicesProps) => {
@@ -57,4 +57,4 @@ const ReducerSetting = (
   }
 });
 
-export default ReducerSetting;
+export default ReducerInvoice;
