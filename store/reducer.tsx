@@ -1,13 +1,13 @@
 import { HYDRATE } from 'next-redux-wrapper';
 import { AnyAction, CombinedState, combineReducers } from 'redux';
 
-import setting from './setting';
+import mode from './mode';
 import invoice from './invoice';
 import { invoicesProps } from './invoice/types';
-import { settingProps } from './setting/types';
+import { modeProps } from './mode/types';
 
 const rootReducer = (
-  state: CombinedState<{ setting: settingProps; invoice: invoicesProps; }> | undefined,
+  state: CombinedState<{ mode: modeProps; invoice: invoicesProps; }> | undefined,
   action: any
 ) => {
   switch (action.type) {
@@ -16,7 +16,7 @@ const rootReducer = (
     return action.payload;
   default: {
     const combineReducer = combineReducers({
-      setting,
+      mode,
       invoice
     });
     return combineReducer(state, action);

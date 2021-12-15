@@ -2,11 +2,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react';
 
 import { RootState } from "../store/reducer";
-import { setDarkmodeToggle } from "../store/setting/actions";
+import { setDarkmodeToggle } from "../store/mode/actions";
 
 function useDarkMode() {
   const dispatch = useDispatch()
-  const { darkMode } = useSelector((state: RootState) => state.setting);
+  const { darkMode } = useSelector((state: RootState) => state.mode);
   const [IconSrc, setIconSrc] = useState("/images/icon-sun.svg")
 
   useEffect(() => {

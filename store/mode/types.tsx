@@ -1,5 +1,5 @@
 export const SET_DARK_MODE = 'SET_DARK_MODE';
 
-export type settingProps = {
+export type modeProps = {
   darkMode: Boolean;
 }

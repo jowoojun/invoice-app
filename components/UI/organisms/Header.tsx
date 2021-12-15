@@ -30,7 +30,7 @@ const HeaderLayoutContainer = styled.div<{darkMode: boolean}>`
 `
 
 const Header = () => {
-  const { darkMode } = useSelector((state:RootState) => state.setting);
+  const { darkMode } = useSelector((state:RootState) => state.mode);
 
   return (
     <HeaderLayoutContainer darkMode={darkMode}>

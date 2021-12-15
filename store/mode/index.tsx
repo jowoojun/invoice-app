@@ -1,19 +1,19 @@
 import produce from "../../utils/produce";
 import {
   SET_DARK_MODE,
-  settingProps
+  modeProps
 } from './types'
 import { ActionRequest } from "./actions";
 
-export const initalState: settingProps = {
+export const initalState: modeProps = {
   darkMode: false,
 };
 
 
-const ReducerSetting = (
-  state:settingProps = initalState,
+const ReducerMode = (
+  state:modeProps = initalState,
   action: ActionRequest
-) => produce(state, (draft: settingProps) => {
+) => produce(state, (draft: modeProps) => {
   switch(action.type) {
   case SET_DARK_MODE: {
     draft.darkMode = action.payload.data;
@@ -24,4 +24,4 @@ const ReducerSetting = (
   }
 });
 
-export default ReducerSetting;
+export default ReducerMode;
