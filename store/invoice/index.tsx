@@ -41,7 +41,6 @@ const ReducerInvoice = (
     break;
   }
   case LOAD_INVOICE_BY_ID_REQUEST: {
-    draft.invoice = null;
     draft.loadInvoicesLoading = true;
     draft.loadInvoicesDone = false;
     draft.loadInvoicesError = null;

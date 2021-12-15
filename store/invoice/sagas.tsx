@@ -44,8 +44,8 @@ function* watchLoadInvoices() {
 // 특정 invoice를 id로 불러오기
 function loadInvoiceByIdAPI(data: { id: string; }) {
   // return axios.get('/invoices');
-  // return { data: [] }
-  return { data: dummeyData.filter((invoice) => invoice.id.includes(data.id)) }
+  // return { data: null }
+  return { data: dummeyData.filter((invoice) => invoice.id.includes(data.id))[0] }
 }
 
 function* loadInvoiceById({payload}: LoadInvoiceByIdRequestAction) {
