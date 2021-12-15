@@ -20,6 +20,12 @@ const InvoiceListItemContainer = styled.div<{ darkMode: boolean }>`
   margin-top: 16px;
   border-radius: 8px;
   background-color: ${props => CardBackgroundColor(props.darkMode)};
+  cursor: pointer;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  &:hover {
+    border: 1px solid #7C5DFA;
+    padding: 11px 23px;
+  }
   @media screen and (min-width: 767px){
     display: grid;
     grid-template-columns: 0.5fr 1.5fr 1fr 1fr 1fr 0.12fr;

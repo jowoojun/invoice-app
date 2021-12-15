@@ -34,6 +34,7 @@ const InvoiceListLayout = styled.div`
   }
   @media screen and (min-width: 1023px) {
     padding: 72px 0;
+    width: 730px;
   }
 `
 

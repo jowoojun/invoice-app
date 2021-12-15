@@ -1,6 +1,6 @@
 import {
   LOAD_INVOICES_REQUEST, LOAD_INVOICES_SUCCESS, LOAD_INVOICES_FAILURE,
-  invoiceProps
+  FILTER_INVOICES_LIST, invoiceProps
 } from "./types";
 
 interface LoadInvoicesRequestAction {
@@ -17,7 +17,18 @@ interface LoadInvoicesFailureAction {
   payload: string,
 }
 
+interface LoadInvoicesFailureAction {
+  type: typeof LOAD_INVOICES_FAILURE
+  payload: string,
+}
+
+interface FilterInvoicesListAction {
+  type: typeof FILTER_INVOICES_LIST,
+  payload: string[],
+}
+
 export type ActionRequest =
   | LoadInvoicesRequestAction
   | LoadInvoicesSuccessAction
-  | LoadInvoicesFailureAction;
+  | LoadInvoicesFailureAction
+  | FilterInvoicesListAction;

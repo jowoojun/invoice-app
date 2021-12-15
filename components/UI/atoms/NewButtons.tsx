@@ -16,7 +16,11 @@ const NewButtonContainer = styled.div`
   height: 44px;
   border-radius: 24px;
   background: ${NewButtonColor};
+  cursor: pointer;
   margin-left: 18px;
+  &:hover {
+    background: #9277FF;
+  }
   @media screen and (min-width: 767px) {
     width: 150px;
     height: 48px;

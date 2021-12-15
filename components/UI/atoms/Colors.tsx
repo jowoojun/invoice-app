@@ -2,6 +2,7 @@
 // Background Color
 export const HeaderBackgroundColor = (darkMode: boolean) => ( darkMode ? "#1E2139" : "#373B53");
 export const MainBackgroundColor = (darkMode: boolean) => ( darkMode ? "#141625" : "#F2F2F2");
+export const FilterBackgroundColor = (darkMode: boolean) => ( darkMode ? "#252945" : "#FFFFFF");
 
 // Card
 export const CardBackgroundColor = (darkMode: boolean) => ( darkMode ? "#1E2139" : "#FFFFFF");

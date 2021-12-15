@@ -1,6 +1,7 @@
 export const LOAD_INVOICES_REQUEST = 'LOAD_INVOICES_REQUEST';
 export const LOAD_INVOICES_SUCCESS = 'LOAD_INVOICES_SUCCESS';
 export const LOAD_INVOICES_FAILURE = 'LOAD_INVOICES_FAILURE';
+export const FILTER_INVOICES_LIST = 'FILTER_INVOICES_LIST';
 
 export type invoiceProps = {
   id: String,
@@ -35,7 +36,8 @@ export type invoiceProps = {
 }
 
 export type invoicesProps = {
-  mainInvoices: invoiceProps[]
+  mainInvoices: invoiceProps[],
+  filteredInvoices: invoiceProps[],
   loadInvoicesLoading: boolean,
   loadInvoicesDone: boolean,
   loadInvoicesError: String | null,

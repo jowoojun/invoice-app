@@ -8,7 +8,7 @@ import { RootState } from '../store/reducer'
 
 const Home: NextPage = () => {
   const dispatch = useDispatch()
-  const { mainInvoices } = useSelector((state: RootState) => state.invoice);
+  const { filteredInvoices } = useSelector((state: RootState) => state.invoice);
   const { darkMode } = useSelector((state: RootState) => state.setting);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   }, [])
 
   return (
-   <HomeTemplate darkMode={darkMode} mainInvoices={mainInvoices} />
+   <HomeTemplate darkMode={darkMode} mainInvoices={filteredInvoices} />
   )
 }
 
