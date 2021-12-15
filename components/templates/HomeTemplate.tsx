@@ -21,7 +21,6 @@ const HomeTemplateContainer = styled.div<{ darkMode: boolean }>`
 const InvoiceListContainer = styled.div`
   @media screen and (min-width: 1023px) {
     display: flex;
-    position: absolute;
     justify-content: center;
     width: 100vw;
   }
