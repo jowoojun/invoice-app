@@ -4,7 +4,7 @@ import {
   FontDefaultColor, FontBodyFontColor1
 } from './Colors'
 
-const DefaultFont = styled.p<{ darkMode?: boolean }>`
+export const DefaultFont = styled.p<{ darkMode?: boolean }>`
   font-family: 'Spartan', serif;  
   margin: 0;
   padding: 0;
@@ -67,6 +67,13 @@ export const Heading_4 = styled(DefaultFont)`
   }
 `
 
+export const Heading_5 = styled(DefaultFont)`
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 20px;
+  letter-spacing: -0.31px;
+`
+
 export const BodyFont1 = styled(DefaultFont)<{ darkMode: boolean }>`
   font-weight: 500;
   line-height: 15px;
@@ -76,15 +83,10 @@ export const BodyFont1 = styled(DefaultFont)<{ darkMode: boolean }>`
   color: ${props => FontBodyFontColor1(props.darkMode)};
 `
 
-export const BodyFont2 = styled(DefaultFont)`
+export const BodyFont2 = styled(DefaultFont)<{ darkMode: boolean }>`
+  font-size: 11px;  
   font-weight: 500;
   line-height: 18px;
   letter-spacing: -0.229167px;
-  
-  @media screen and (min-width: 767px) {
-    
-  }
-  @media screen and (min-width: 1023px) {
-    font-size: 11px;
-  }
+  color: ${props => FontBodyFontColor1(props.darkMode)};
 `
