@@ -12,12 +12,16 @@ export const FontBodyFontColor1 = (darkMode: boolean) => ( darkMode ? "#DFE3FA" 
 export const FontBodyFontColor2 = (darkMode: boolean) => ( darkMode ? "#DFE3FA" : "#858BB2");
 export const FontBodyFontColor3 = (darkMode: boolean) => ( darkMode ? "#DFE3FA" : "#7E88C3");
 export const FontShopTagColor1 = (darkMode: boolean) => ( darkMode ? "#888EB0" : "#7E88C3");
+export const FontButtonWhite = "#FFFFFF"
 export const InvoiceStatusTextColor = (darkMode: boolean, status: String) => {
   if(status === "paid") return "rgba(51, 214, 159, 1)"
   else if(status === "pending") return "rgba(255, 143, 0, 1)"
   else return darkMode? "rgba(223, 227, 250, 1)" : "rgba(55, 59, 83, 1)" ;
 }
 // Button
+export const EditButtonColor = (darkMode: boolean) => ( darkMode ? "#252945" : "#F9FAFE");
+export const DeleteButtonColor = "#EC5757";
+export const MarkPaidButtonColor = "#7C5DFA";
 export const NewButtonColor = "#7C5DFA;"
 export const InvoiceStatusButtonColor = (darkMode: boolean, status: String) => {
   if(status === "paid") return "rgba(51, 214, 159, 0.06)"

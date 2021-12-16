@@ -8,6 +8,7 @@ import InvoiceDetailHeader from '../UI/organisms/InvoiceDetailHeader';
 import Header from '../UI/organisms/Header'
 import InvoiceInformation from '../UI/organisms/InvoiceInformation';
 import InvoiceTotalPrice from '../UI/organisms/InvoiceTotalPrice';
+import InvoiceFooterButton from '../UI/organisms/InvoiceFooterButton';
 
 import { invoiceProps } from "../../store/invoice/types"
 
@@ -50,9 +51,11 @@ const LoadingContainer = styled.div`
 
 const InvoiceDetailContainer = styled.div<{ darkMode: boolean }>`
   padding: 24px;
+  margin-bottom: 123px;
   background-color: ${props => CardBackgroundColor(props.darkMode)};
   @media screen and (min-width: 767px) {
     padding: 32px;
+    margin-bottom: 0;
   }
 `
 
@@ -76,6 +79,7 @@ const InvoiceDetailTemplate: FunctionComponent<InvoiceDetailTemplate> = ({darkMo
               <InvoiceTotalPrice invoice={invoice} darkMode={darkMode} />
             </InvoiceDetailContainer>
           </InvoideDetailLayout>
+          <InvoiceFooterButton darkMode={darkMode} />
         </InvoideDetailPageContainer>
       :
         <LoadingContainer>
