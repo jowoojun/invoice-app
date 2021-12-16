@@ -41,7 +41,7 @@ const InvoicePriceSection1 = ({darkMode, priceItems}: InvoicePriceSection1Props)
   return (
     <InvoicePriceSection1Container darkMode={darkMode}>
       {priceItems.map((item) => 
-        <PriceItemsContainer key={item.name}>
+        <PriceItemsContainer key={item.name.toString()}>
           <div>
             <Heading_4 darkMode={darkMode}>{item.name.toString()}</Heading_4>
             <PriceCalculateFont darkMode={darkMode}>{item.quantity} x £ {item.price.toFixed(2)}</PriceCalculateFont>
