@@ -1,0 +1,36 @@
+import styled from "styled-components"
+
+import { CardBackgroundColor, FontBodyFontColor2 } from "../atoms/Colors"
+import { BodyFont1 } from "../atoms/Fonts"
+import StatusButton from "../atoms/StatusButton"
+
+import { invoiceProps } from "../../../store/invoice/types"
+
+const InvoiceDetailHeaderContainer = styled.div<{ darkMode: boolean }>`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+  padding: 24px 24px 27px 24px;
+  background-color: ${props => CardBackgroundColor(props.darkMode)}
+`
+
+const StatusFont = styled(BodyFont1)<{ darkMode: boolean }>`
+  color: ${props => FontBodyFontColor2(props.darkMode)};
+`
+
+interface InvoiceDetailHeaderProps {
+  darkMode: boolean
+  invoice: invoiceProps
+}
+
+const InvoiceDetailHeader = ({darkMode, invoice}: InvoiceDetailHeaderProps) => {
+  return (
+    <InvoiceDetailHeaderContainer darkMode={darkMode}>
+      <StatusFont darkMode={darkMode}>Status</StatusFont>
+      <StatusButton status={invoice.status} darkMode={darkMode} />
+    </InvoiceDetailHeaderContainer>
+  )
+}
+
+export default InvoiceDetailHeader;
