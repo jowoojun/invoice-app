@@ -8,6 +8,7 @@ import {
 } from "../atoms/Colors";
 import { BodyFont1, Heading_3, Heading_4 } from "../atoms/Fonts";
 import StatusButton from '../atoms/StatusButton'
+import InvoiceId from '../atoms/InvoiceId'
 
 import useWindowSize from "../../../hooks/useWindowSize";
 import useTimeFormat from "../../../hooks/useTimeFormat";
@@ -31,11 +32,6 @@ const InvoiceListItemContainer = styled.div<{ darkMode: boolean }>`
     grid-template-columns: 0.7fr 1.5fr 1fr 1fr 1fr 0.2fr;
     align-items: center;
   }
-`
-
-const ShopTagFont = styled(Heading_4)<{ darkMode: boolean }>`
-  display: inline-block; 
-  color: ${props => FontShopTagColor1(props.darkMode)};
 `
 
 const InvoiceCardTypeLayout = styled.div`
@@ -75,9 +71,7 @@ const InvoiceListItemMobile = ({newFormatTime, invoice, darkMode}: InvoiceListIt
   return (
     <>
       <InvoiceCardTypeLayout>
-        <Heading_4 darkMode={darkMode}>
-          <ShopTagFont darkMode={darkMode}>#</ShopTagFont>{invoice.id}
-        </Heading_4>
+        <InvoiceId id={invoice.id} darkMode={darkMode} />
         <BodyFont1 darkMode={darkMode}>{invoice.clientName}</BodyFont1>
       </InvoiceCardTypeLayout>
       <InvoiceCardTypeLayout>
@@ -94,9 +88,7 @@ const InvoiceListItemMobile = ({newFormatTime, invoice, darkMode}: InvoiceListIt
 const InvoiceListItemTablet = ({newFormatTime, invoice, darkMode}: InvoiceListItemDesignProps) => {
   return (
     <>
-      <Heading_4 darkMode={darkMode}>
-        <ShopTagFont darkMode={darkMode}>#</ShopTagFont>{invoice.id}
-      </Heading_4>
+      <InvoiceId id={invoice.id} darkMode={darkMode} />
       <InvoiceDueText darkMode={darkMode}>Due {newFormatTime}</InvoiceDueText>
       <BodyFont1 darkMode={darkMode}>{invoice.clientName}</BodyFont1>
       <InvoiceTotalFont darkMode={darkMode}>£ {invoice.total.toFixed(2)}</InvoiceTotalFont>
@@ -118,7 +110,13 @@ const InvoiceListItem = ({invoice, darkMode}: InvoiceListItemProps) => {
   const newFormatTime = useTimeFormat(invoice.paymentDue.toString());
   
   return (
-    <Link href={'/invoice/' + invoice.id} passHref>
+      <Link href={{
+          pathname: `${'/invoice/'}[id]`,
+          query: { id: invoice.id.toString() }, // array라 문자화
+        }}
+        as={'/invoice/' + invoice.id.toString()} // 주소창의 endpoint
+        passHref
+      >
       <InvoiceListItemContainer darkMode={darkMode}>
         {width < 767 ?
           <InvoiceListItemMobile newFormatTime={newFormatTime} invoice={invoice} darkMode={darkMode} />
