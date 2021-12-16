@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { invoiceProps } from "../../../store/invoice/types";
 import { 
   CardBackgroundColor, FontShopTagColor1, 
-  InvoiceStatusButtonColor, InvoiceStatusTextColor,
 } from "../atoms/Colors";
 import { BodyFont1, Heading_3, Heading_4 } from "../atoms/Fonts";
+import StatusButton from '../atoms/StatusButton'
 
 import useWindowSize from "../../../hooks/useWindowSize";
 import useTimeFormat from "../../../hooks/useTimeFormat";
@@ -28,7 +28,7 @@ const InvoiceListItemContainer = styled.div<{ darkMode: boolean }>`
   }
   @media screen and (min-width: 767px){
     display: grid;
-    grid-template-columns: 0.5fr 1.5fr 1fr 1fr 1fr 0.12fr;
+    grid-template-columns: 0.7fr 1.5fr 1fr 1fr 1fr 0.2fr;
     align-items: center;
   }
 `
@@ -59,43 +59,10 @@ const InvoiceTotalFont = styled(Heading_3)<{ darkMode: boolean }>`
   margin-right: 20px;
 `
 
-// StatusButton
-const StatusButton = styled.button<{ darkMode: boolean, status: String }>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 104px;
-  height: 40px;
-  margin-left: 20px;
-  background-color: ${props => InvoiceStatusButtonColor(props.darkMode, props.status)};
-  mix-blend-mode: normal;
-  border-radius: 6px;
-`
-
-const StatusCircle = styled.span<{ darkMode: boolean, status: String }>`
-  width: 8px;
-  height: 8px;
-  display: inline-block;
-  background-color: ${props => InvoiceStatusTextColor(props.darkMode, props.status)};
-  border-radius: 50%;
-  margin-right: 8px;
-`
-
-const StatusButtonText = styled(Heading_4)<{ darkMode: boolean, status: String }>`
-  color: ${props => InvoiceStatusTextColor(props.darkMode, props.status)};
-  text-transform: capitalize;
-`
-
 // Arrow Icon
 const ArrowIconContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-`
-
-const ArrowIcon = styled.div`
-  position: relative;
-  width: 6px;
-  height: 10px;
 `
 
 interface InvoiceListItemDesignProps {
@@ -118,10 +85,7 @@ const InvoiceListItemMobile = ({newFormatTime, invoice, darkMode}: InvoiceListIt
           <InvoiceDueText darkMode={darkMode}>Due {newFormatTime}</InvoiceDueText>
           <Heading_3 darkMode={darkMode}>£ {invoice.total.toFixed(2)}</Heading_3>
         </div>
-        <StatusButton darkMode={darkMode} status={invoice.status}>
-          <StatusCircle darkMode={darkMode} status={invoice.status} />
-          <StatusButtonText darkMode={darkMode} status={invoice.status}>{invoice.status}</StatusButtonText>
-        </StatusButton>
+        <StatusButton status={invoice.status} darkMode={darkMode} />
       </InvoiceCardTypeLayout>
     </>
   )
@@ -136,14 +100,9 @@ const InvoiceListItemTablet = ({newFormatTime, invoice, darkMode}: InvoiceListIt
       <InvoiceDueText darkMode={darkMode}>Due {newFormatTime}</InvoiceDueText>
       <BodyFont1 darkMode={darkMode}>{invoice.clientName}</BodyFont1>
       <InvoiceTotalFont darkMode={darkMode}>£ {invoice.total.toFixed(2)}</InvoiceTotalFont>
-      <StatusButton darkMode={darkMode} status={invoice.status}>
-        <StatusCircle darkMode={darkMode} status={invoice.status} />
-        <StatusButtonText darkMode={darkMode} status={invoice.status}>{invoice.status}</StatusButtonText>
-      </StatusButton>
+      <StatusButton status={invoice.status} darkMode={darkMode} />
       <ArrowIconContainer>
-        <ArrowIcon>
-          <Image alt={'arrow-right'} src={'/images/icon-arrow-right.svg'} layout={'fill'} objectFit={'contain'} />
-        </ArrowIcon>
+        <Image alt={'arrow-right'} src={'/images/icon-arrow-right.svg'} width={6} height={10} />
       </ArrowIconContainer>
     </>
   )
