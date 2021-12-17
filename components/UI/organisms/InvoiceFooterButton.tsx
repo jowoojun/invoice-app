@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import {
   CardBackgroundColor
 } from '../atoms/Colors';
-import EditButton from '../atoms/InvoiceButtons/EditButton';
-import DeleteButton from '../atoms/InvoiceButtons/DeleteButton';
-import PaidButton from '../atoms/InvoiceButtons/PaidButton';
+import EditButton from '../atoms/Buttons/EditButton';
+import DeleteButton from '../atoms/Buttons/DeleteButton';
+import PaidButton from '../atoms/Buttons/PaidButton';
 
 const InvoiceFooterButtonContainer = styled.div<{ darkMode: boolean }>`
   display: flex;

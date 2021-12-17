@@ -74,6 +74,13 @@ export const Heading_5 = styled(DefaultFont)`
   letter-spacing: -0.31px;
 `
 
+export const Heading_6 = styled(DefaultFont)`
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 32px;
+  letter-spacing: -0.5px;
+`
+
 export const BodyFont1 = styled(DefaultFont)<{ darkMode: boolean }>`
   font-weight: 500;
   line-height: 15px;

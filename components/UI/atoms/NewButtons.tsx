@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Link from 'next/link'
 
 import { Heading_4 } from './Fonts'
 import { 
@@ -59,16 +60,18 @@ const NewButtonFont = styled(Heading_4)`
 const NewButton = () => {
   const width = useWindowSize();
   return (
-    <NewButtonContainer>
-      <PlueIconContainer>
-        <PlueIcon>
-          <Image alt={'new invoice'} src={'/images/icon-plus.svg'} layout={'fill'} objectFit={'contain'} />
-        </PlueIcon>
-      </PlueIconContainer>
-      <NewButtonFont>
-        {width < 767 ? "New" : "New Invoice"}
-      </NewButtonFont>
-    </NewButtonContainer>
+    <Link href={'/newInvoice'} passHref>
+      <NewButtonContainer>
+        <PlueIconContainer>
+          <PlueIcon>
+            <Image alt={'new invoice'} src={'/images/icon-plus.svg'} layout={'fill'} objectFit={'contain'} />
+          </PlueIcon>
+        </PlueIconContainer>
+        <NewButtonFont>
+          {width < 767 ? "New" : "New Invoice"}
+        </NewButtonFont>
+      </NewButtonContainer>
+    </Link>
   )
 }
 

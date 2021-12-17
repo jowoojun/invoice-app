@@ -5,9 +5,9 @@ import { BodyFont1 } from "../atoms/Fonts"
 import StatusButton from "../atoms/StatusButton"
 
 import { invoiceProps } from "../../../store/invoice/types"
-import EditButton from "../atoms/InvoiceButtons/EditButton"
-import DeleteButton from "../atoms/InvoiceButtons/DeleteButton"
-import PaidButton from "../atoms/InvoiceButtons/PaidButton"
+import EditButton from "../atoms/Buttons/EditButton"
+import DeleteButton from "../atoms/Buttons/DeleteButton"
+import PaidButton from "../atoms/Buttons/PaidButton"
 
 const InvoiceDetailHeaderContainer = styled.div<{ darkMode: boolean }>`
   display: flex;
